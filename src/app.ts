@@ -4,18 +4,18 @@ import { fileURLToPath } from "url";
 
 // __filename and __dirname are not available in ES6 modules
 // Convert the import.meta.url to a file path and store it in __filename
-const __filename = fileURLToPath(import.meta.url);
+const __filename: string = fileURLToPath(import.meta.url);
 
 // Get the directory name from the __filename
-const __dirname = path.dirname(__filename);
+const __dirname: string = path.dirname(__filename);
 
 // The aim is to get a random file from the "texts" folder
 function getRandomFilePath(): string {
   // Get all the filenames from the "texts" folder
-  const filenames = fs.readdirSync(path.join(__dirname, "texts"));
+  const filenames: string[] = fs.readdirSync(path.join(__dirname, "texts"));
 
   // Get a random index from the filenames array (0 to length - 1)
-  const randomFileIndex = Math.floor(Math.random() * filenames.length);
+  const randomFileIndex: number = Math.floor(Math.random() * filenames.length);
 
   // Return the file path by joining the directory name and the randomly selected filename
   return path.join(__dirname, "texts", filenames[randomFileIndex]);
@@ -25,13 +25,13 @@ function getRandomFilePath(): string {
 function readFileContent(filePath: string): Promise<string> {
   return new Promise((resolve, reject) => {
     // Create a read stream for the file at the given filePath, using UTF-8 encoding
-    const stream = fs.createReadStream(filePath, "utf-8");
+    const stream: fs.ReadStream = fs.createReadStream(filePath, "utf-8");
 
     // Initialize a variable to store the file content as it is read
-    let fileContent = "";
+    let fileContent: string = "";
 
     // Event handler for 'data' event, which is emitted when a chunk of data is read from the file
-    stream.on("data", (chunk) => {
+    stream.on("data", (chunk: string) => {
       // Append the data chunk to the fileContent variable
       fileContent += chunk;
     });
@@ -43,7 +43,7 @@ function readFileContent(filePath: string): Promise<string> {
     });
 
     // Event handler for 'error' event, which is emitted if there is an error while reading the file
-    stream.on("error", (err) => {
+    stream.on("error", (err: Error) => {
       // Reject the Promise with the encountered error
       reject(err);
     });
@@ -54,10 +54,10 @@ function readFileContent(filePath: string): Promise<string> {
 (async () => {
   try {
     // Get a random file path
-    const filePath = getRandomFilePath();
+    const filePath: string = getRandomFilePath();
 
     // Read the content of the file asynchronously using the readFileContent function
-    const fileContent = await readFileContent(filePath);
+    const fileContent: string = await readFileContent(filePath);
     console.log(fileContent);
   } catch (err) {
     console.log("Error reading file: ", err);
