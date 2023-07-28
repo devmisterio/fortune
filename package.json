@@ -4,6 +4,9 @@
   "description": "Fortune is a Node.js application that Unix-style fortune telling program clone written in Typecript.",
   "main": "./dist/app.js",
   "type": "module",
+  "bin": {
+    "fortune": "dist/app.js"
+  },
   "scripts": {
     "postinstall": "npm run build",
     "build": "swc src --out-dir dist --copy-files src/texts",
@@ -11,8 +14,13 @@
     "start": "node dist/app.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Semih Arslan",
+    "email": "arslan_semih@yahoo.com",
+    "url": "https://tr.linkedin.com/in/semih-arslan-b06693189"
+  },
+  "homepage": "https://github.com/devmisterio/fortune",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@swc/cli": "^0.1.62",
     "@swc/core": "^1.3.71",
