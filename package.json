@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "postinstall": "npm run build",
     "build": "swc src --out-dir dist --copy-files src/texts",
     "watch": "swc src --out-dir dist --watch",
     "start": "node dist/app.js"
