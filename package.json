@@ -1,5 +1,5 @@
 {
-  "name": "fortune",
+  "name": "fortune-ts",
   "version": "1.0.0",
   "description": "Fortune is a Node.js application that Unix-style fortune telling program clone written in Typecript.",
   "main": "./dist/app.js",
