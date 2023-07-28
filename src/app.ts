@@ -50,6 +50,21 @@ function readFileContent(filePath: string): Promise<string> {
   });
 }
 
+// Function to get a random quote from the file content
+function getRandomQuote(fileContent: string): string {
+  // Split the file content into an array of quotes based on the "%" delimiter.
+  const quotes: string[] = fileContent.split("%");
+
+  // Generate a random index to select a quote from the quotes array.
+  const randomIndex: number = Math.floor(Math.random() * quotes.length);
+
+  // Get the quote at the randomly selected index.
+  const randomQuote: string = quotes[randomIndex];
+
+  // Return the random quote.
+  return randomQuote;
+}
+
 // Immediately invoked async function expression (IIFE) to read a random file and log its content
 (async () => {
   try {
@@ -58,7 +73,11 @@ function readFileContent(filePath: string): Promise<string> {
 
     // Read the content of the file asynchronously using the readFileContent function
     const fileContent: string = await readFileContent(filePath);
-    console.log(fileContent);
+
+    // Get a random quote from the file content and log it
+    const randomQuote: string = getRandomQuote(fileContent);
+
+    console.log(randomQuote);
   } catch (err) {
     console.log("Error reading file: ", err);
   }
