@@ -1,20 +1,29 @@
-#!/usr/bin/env node
+import { getFortune } from "../lib/fortune";
 
-import * as fs from 'fs';
-import * as path from 'path';
-import { RandomQuoteReader } from "../lib/class/RandomQuoteReader";
+/**
+ * Print the fortune to the console.
+ * @param {string} fortune - The fortune to print.
+ */
+function printFortune(fortune: string): void {
+  console.log(fortune);
+}
 
-const randomQuoteReader: RandomQuoteReader = new RandomQuoteReader();
-console.log(randomQuoteReader.getRandomFilePath());
+/**
+ * Main entry point of the application.
+ */
+async function main(): Promise<void> {
+  try {
+    // Get the fortune using the getFortune function
+    const fortune: string = await getFortune();
 
-const textsFiles: string[] = fs.readdirSync(path.join(__dirname, "../lib/texts"), 'utf8');
-const randomFileIndex: number = Math.floor(Math.random() * textsFiles.length);
-const randomTextFilePath: string = path.join(__dirname, "../lib/texts", textsFiles[randomFileIndex]);
+    // Print the fortune to the console
+    printFortune(fortune);
+  } catch (err) {
+    // Log and handle any errors that occur during the process
+    console.error("Error getting fortune: ", err);
+    process.exit(1);
+  }
+}
 
-const text: string = fs.readFileSync(randomTextFilePath, 'utf8');
-
-const quotes: string[] = text.split("%");
-const randomIndex: number = Math.floor(Math.random() * quotes.length);
-console.log(quotes[randomIndex]);
-
-
+// Call the main function
+main();
