@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { getFortune } from "../lib/fortune";
 
 /**
