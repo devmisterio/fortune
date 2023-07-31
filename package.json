@@ -1,6 +1,6 @@
 {
   "name": "fortune-ts",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Fortune is a Node.js application that Unix-style fortune telling program clone written in Typecript.",
   "main": "./dist/lib/fortune.js",
   "bin": {
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/devmisterio/fortune",
   "license": "GPL-3.0",
-  "devDependencies": {
+  "dependencies": {
     "@types/node": "^20.4.5",
     "typescript": "^5.1.6"
   }
