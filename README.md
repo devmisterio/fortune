@@ -14,77 +14,31 @@ Fortune is a Node.js application that Unix-style fortune telling program clone w
 ### Prerequisites
 
 - Node.js
+- NPM
 
-### Installation
+### Installation and Usage
 
-```bash
-   git clone https://github.com/your-username/fortune.git
-   cd fortune
-   npm install
-```
-
-### Usage
-
-To run the application and get a random quote, use the following command:
+#### With NPM
+Install globally and run with **```fortune```** command
 
 ```bash
-   npm start
+   $ npm install - g fortune-ts
+
+   $ fortune
 ```
 
-The application will read a random text file from the "texts" folder and display a random quote from that file on the console.
-
-### Docker Usage
+#### With Docker
 
 Alternatively, you can use Docker to run the project in a container. First, make sure you have Docker installed on your system.
-
-1. Build the Docker image:
-
-```bash
-    docker build -t fortune-app .
-```
-
-2. Run the Docker container:
-
-```bash
-    docker run -it --rm fortune-app
-```
-
 The application will start inside the Docker container, and you will see the random quote displayed on the console.
+
+```bash
+    docker run -it --rm devmisterio/fortune
+```
 
 ### Customizing Quotes
 
 To add your own quotes or modify existing ones, simply edit the text files in the "texts" folder. Each quote should be separated by the "%" symbol.
-
-### Project Structure
-
-```bash
-fortune
-├── Dockerfile
-├── LICENSE
-├── README.md
-├── package-lock.json
-├── package.json
-├── pnpm-lock.yaml
-├── src
-│   ├── app.ts
-│   ├── class
-│   │   └── RandomFileReader.ts
-│   └── texts
-│       ├── art
-│       ├── computers
-│       ├── cookie
-│       ├── debian
-│       ├── ....
-│       ├── ....
-│       ├── ....
-└── tsconfig.json
-```
-
-- src/class/: Contains the RandomFileReader class responsible for reading files and extracting quotes.
-- src/texts/: Contains text files with quotes, each separated by the "%" symbol.
-- src/app.ts: The main script that initializes the application and displays the random quote.
-- package.json: Contains project metadata and dependencies.
-- tsconfig.json: TypeScript configuration file.
 
 ## License
 
