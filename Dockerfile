@@ -5,4 +5,4 @@ COPY . .
 
 RUN npm install
 
-CMD [ "node", "dist/app.js" ]
+CMD [ "node", "dist/bin/fortune.js" ]
